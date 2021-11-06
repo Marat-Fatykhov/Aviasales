@@ -1,0 +1,29 @@
+body {
+    padding: 0;
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.app {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #F3F7FA;
+}
+
+.app__wrapper {
+    display: flex;
+    flex-direction: row;
+    background-color: #F3F7FA;
+    justify-content: center;
+    width: 100vw;
+    height: 1020px;
+}
+
+.app__logo {
+    width: 60px;
+    height: 60px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

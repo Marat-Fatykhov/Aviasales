@@ -1,0 +1,15 @@
+.app__navigation {
+    width: 200px;
+    height: 220px;
+    display: flex;
+    flex-direction: column;
+    background-color: #FFF;
+    box-shadow: 2px 2px 2px rgba(167, 165, 165, 0.25);
+    margin-right: 20px;
+    padding: 10px;
+}
+
+.navigation__checkbox {
+    margin-bottom: 10px;
+    cursor: pointer;
+}
