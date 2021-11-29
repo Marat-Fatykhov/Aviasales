@@ -1,5 +1,7 @@
 .app__content {
     width: 502px;
+    display: flex;
+    flex-direction: column;
 }
 
 .content__filter {
@@ -30,4 +32,14 @@
 .filter__button:active {
     background-color: #2196F3;
     color: #fff;
+}
+
+.content__show-more {
+    background-color: #2196F3;
+    color: #fff;
+    width: 200px;
+    height: 40px;
+    align-self: center;
+    border: none;
+    border-radius: 4px;
 }

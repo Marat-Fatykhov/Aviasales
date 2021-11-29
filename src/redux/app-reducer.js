@@ -31,11 +31,11 @@ const appReducer = (state = initialState, action) => {
             return { ...state, tickets: [ ...state.tickets, ...action.data ] }
         case ALL_TICKETS_CHECK:
             return { ...state, viewTickets: action.active ? state.tickets : [], 
-                all: !state.all, 
-                noTrasfer: !state.noTrasfer,
-                oneTransfer: !state.oneTransfer,
-                twoTransfer: !state.twoTransfer,
-                threeTransfer: !state.threeTransfer }
+                all: action.active, 
+                noTrasfer: action.active,
+                oneTransfer: action.active,
+                twoTransfer: action.active,
+                threeTransfer: action.active }
         case NO_TRANSFER_CHECK:
             return { ...state, viewTickets: [ ...state.viewTickets, action.active 
                 ? state.tickets.filter(ticket => {
@@ -45,7 +45,7 @@ const appReducer = (state = initialState, action) => {
                     }
                     return false
                 }) 
-                : [] ].flat(), noTrasfer: !state.noTrasfer }
+                : [] ].flat(), noTrasfer: action.active }
         case ONE_TRANSFER_CHECK:
             return { ...state, viewTickets: [ ...state.viewTickets, action.active ? state.tickets.filter(ticket => {
                 const [ there, back ] = ticket.segments
@@ -53,7 +53,7 @@ const appReducer = (state = initialState, action) => {
                     return true
                 }
                 return false
-            }) : [] ].flat(), oneTransfer: !state.oneTransfer }
+            }) : [] ].flat(), oneTransfer: action.active }
         case TWO_TRANSFER_CHECK:
             return { ...state, viewTickets: [ ...state.viewTickets, action.active ? state.tickets.filter(ticket => {
                 const [ there, back ] = ticket.segments
@@ -61,7 +61,7 @@ const appReducer = (state = initialState, action) => {
                     return true
                 }
                 return false
-            }) : [] ].flat(), twoTransfer: !state.twoTransfer }
+            }) : [] ].flat(), twoTransfer: action.active }
         case THREE_TRANSFER_CHECK:
             return { ...state, viewTickets: [ ...state.viewTickets, action.active ? state.tickets.filter(ticket => {
                 const [ there, back ] = ticket.segments

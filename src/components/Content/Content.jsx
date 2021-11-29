@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { PropTypes } from 'prop-types'
 import Ticket from './Ticket/Ticket';
 import './Content.css'
@@ -10,10 +10,14 @@ const Content = (props) => {
         const [ there, back ] = segments
         return <Ticket carrier={carrier} price={price} there={there} back={back} key={Math.random()} />
     })
-    const content = viewTickets.length !== 0 ? tickets.slice(0, 5) : <h2>Настройте фильтр по пересадкам</h2>
+    const [counter, setCounter] = useState(5)
+    const content = viewTickets.length !== 0 ? tickets.slice(0, counter) : <h2>Настройте фильтр по пересадкам</h2>
     useEffect(() => {
         if(!noTrasfer && !oneTransfer && !twoTransfer && !threeTransfer) cleanTickets()
     }, [noTrasfer, oneTransfer, twoTransfer, threeTransfer, cleanTickets])
+    const showMoreButton = viewTickets.length !== 0 
+        ? <button type ='button' className='content__show-more' onClick={ () => setCounter(prevValue => prevValue + 5)}>Показать еще пять билетов</button> 
+        : null
     return (
         <div className='app__content'>
             <div className='content__filter'>
@@ -22,6 +26,7 @@ const Content = (props) => {
                 <button type='button' className='filter__button' onClick={ optimalTickets }>ОПТИМАЛЬНЫЙ</button>
             </div>
             {content}
+            {showMoreButton}
         </div>
     )
 }
